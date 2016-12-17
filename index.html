@@ -19,12 +19,13 @@
   <body>
     <a-scene>
       <a-camera>
-        <a-entity cursor="fuse: true; fuseTimeout: 500"
+        <a-cursor 
+		  fuse="true" 
+	      fuse-timeout="500"
           position="0 0 -1"
-          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.05"
           material="color: blue; shader: flat">
         </a-entity>
-        <a-entity id="text" position="-0.6 0.1 -2"
+        <a-entity id="text" position="-0.6 0.1 -1"
           bmfont-text="color: black;">
         </a-entity>
       </a-camera>
