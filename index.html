@@ -5,13 +5,36 @@
     <title>Hello, World! - A-Frame</title>
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
-	<script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script>
+      AFRAME.registerComponent('cursor-listener', {
+        init: function () {
+          this.el.addEventListener("click", function (evt) {
+            document.getElementById("text").setAttribute("bmfont-text", "text", this.getAttribute("id"));
+          });
+        }
+      });
+    </script>
   </head>
   <body>
-	  <a-scene>
-	  <a-entity position="-0.6 1.6 -2"
-		bmfont-text="color: black; text: Hello World;">
-	  </a-entity>
+    <a-scene>
+      <a-camera>
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.05"
+          material="color: blue; shader: flat">
+        </a-entity>
+        <a-entity id="text" position="-0.6 0.1 -2"
+          bmfont-text="color: black;">
+        </a-entity>
+      </a-camera>
+
+
+      <a-box id="box" cursor-listener position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere id="sphere" cursor-listener position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder id="cylinder" cursor-listener  position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+
       <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>
